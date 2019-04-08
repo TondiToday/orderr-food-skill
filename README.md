@@ -1,11 +1,12 @@
-## Orderr Food
-Ordering food
+## Find nearby restaurants
+Find nearby restaurants
 
 ## Description
-Ordering food
+Dont feel like cooking? Find nearby restaurants
 
 ## Examples
- - "Order food"
+ - "I dont feel like cooking"
+ - "What are nearby restaurants"
 
 
 ## Credits
