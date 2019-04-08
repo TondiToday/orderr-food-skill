@@ -1,5 +1,5 @@
 from mycroft import MycroftSkill, intent_file_handler
-# from adapt.intent import IntentBuilder
+from adapt.intent import IntentBuilder
 import requests
 
 url = 'https://api.yelp.com/v3/businesses/search'
@@ -28,18 +28,17 @@ def find_restaurants(place):
 class FindRestaurant(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
-        self.restaurant_list = []
 
     # Find closest restaurants
-    @intent_file_handler('find_restaurant.intent')
+    @intent_file_handler('food.orderr.intent')
     def finding_restaurant(self, message):
         restaurants = find_restaurants(message.data['place'])
-        self.speak_dialog('find.restaurant')
         if restaurants == 'error':
             self.speak_dialog('ThePlaceWasNotFound')
         else:
-            self.speak_dialog('TheClosestRestaurantsAre')
-
+            self.speak_dialog('place')
+            for item in restaurants:
+                self.speak(item)
 
 def create_skill():
     return FindRestaurant()
